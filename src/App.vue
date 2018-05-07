@@ -1,18 +1,35 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
-    <hello-world></hello-world>
-    <detail></detail>
+    <!--<img src="./assets/logo.png">-->
+    <!--<router-view/>-->
+    <!--<hello-world></hello-world>-->
+    <div class="container">
+      <ul>
+        <li>
+          <v-link href="/">主页</v-link>
+          <v-link href="/about">About</v-link>
+          <v-link href="/haha">Haha</v-link>
+        </li>
+      </ul>
+
+      <slot></slot>
+      <div>---------------------------------------------------</div>
+    </div>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-import Detail from './components/Detail'
+// import HelloWorld from './components/HelloWorld'
+// import Detail from './components/Detail'
+import VLink from './components/VLink'
+
 export default {
-  name: 'App',
-  components: {Detail, HelloWorld}
+  components: {
+    // Detail,
+    // HelloWorld,
+    VLink
+  }
 }
 </script>
 

@@ -75,7 +75,7 @@
       <p>9.v-else-if 指令：<input type="text" v-model="type"></p>
       <!-- 在Vue2.0中，v-for迭代语法已经发生了变化：丢弃了: $index,  $key  -->
       <ul>
-        <li v-for="site in sites" :key="site">
+        <li v-for="site in sites" :key="site.name">
           {{ site.name }}
         </li>
       </ul>
