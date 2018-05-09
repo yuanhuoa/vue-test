@@ -14,9 +14,16 @@
 
     <p>5.修饰符</p>
     <p class="bindAttr">a.事件修饰器.stop<a :href="url" v-on:click.stop="doSomething">baidu</a></p>
-    <p class="bindAttr">a.阻止单击事件冒泡.stop<input type="button" value="点击" v-on:click="doSomething"></p>
-    <p class="bindAttr">a.阻止单击事件冒泡.stop<input type="button" value="点击" v-on:click="doSomething"></p>
-    <p class="bindAttr">a.按键修饰符.keyup.enter<input v-on:keyup.enter="doSomething" v-model="writeIn"></p>
+    <p class="bindAttr">b.按键修饰符.keyup.enter<input @keyup.enter="doThis" v-model="msgs"></p>
+    <p class="bindAttr">c.按键修饰符.在改变后才触发（也就是说只有光标离开input输入框的时候值才会改变）
+      <input v-model.lazy="msgs" @change="doThis">绑定：{{msgs}}</p>
+
+    <p>5.过滤器</p>
+    <p class="bindAttr">a.在两个大括号中 {{ message | capitalize }}</p>
+    <p class="bindAttr" :id="message | capitalize">b.在v-bind 指令中 id:{{ message | capitalize }}</p>
+
+    <p>6.对象添加一个新的属性<button @click="reverseMessage">{{message}}</button></p>
+    <div ></div>
   </div>
 </template>
 
@@ -31,18 +38,40 @@ export default{
       ifShow: false,
       url: 'http://www.baidu.com',
       message: 'abcdef',
-      writeIn: ''
+      writeIn: '',
+      msgs: '',
+      props: {
+        name: 'zhang'
+      }
     }
   },
   methods: {
     doSomething: function () {
-      console.info(this.writeIn)
-      alert(0)
+      console.info('阻止单击事件冒泡,a跳转之前执行此方法')
       confirm('确认删除吗')
+    },
+    doThis: function () {
+      console.info(this.msgs)
+    },
+    reverseMessage: function () {
+      /* Vue.set 方法用来新增对象的属性。如果要增加属性的对象是响应式的，那该方法可以确保属性被创建后也是响应式的
+       * this.props.pwd = 'pwd' 可以直接赋值，但是其属性。。。。
+       */
+      console.log(this.props.name)
+      this.props.pwd = 'pwd'
+      this.$set(this.props, 'psw', 123456)
+      console.log(this.props)
     }
   },
   components: {
 
+  },
+  filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
   }
 }
 </script>

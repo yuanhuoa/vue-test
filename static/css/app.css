@@ -6,8 +6,9 @@
   margin: 0 auto;
 }
 .container{
-  width: 300px;
+  width: 220px;
   float: left;
+  font-size: 14px;
   border: 1px solid gainsboro;
 }
 .container ul{
@@ -16,19 +17,28 @@
   padding: 0;
 }
 .container ul li{
-  margin: 0 10px;
-  padding: 5px;
   border-bottom: 1px solid gainsboro;
 }
-.container ul li a{
-  color: #3399ff;
+.container ul li:last-child{
+  border-bottom: 0px;
+}
+.container-a{
+  color: #000;
   text-decoration: none;
   display: inline-block;
-  width: 100%;
-  padding: 20px 0 3px;
+  width: 95%;
+  padding: 10px 0 10px 5%;
+}
+.container-a-click{
+  color: #fff;
+  font-weight: 600;
+  background-color: #64854c;
 }
 .container ul li a:hover{
-  color: #f76b13;
+  font-weight: 600;
+}
+.container-a-click:hover{
+  background-color: #96B97D;
 }
 .contain-main{
   margin: 0 20px;

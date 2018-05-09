@@ -5,8 +5,8 @@ import Detail from '@/components/Detail'
 import VueFirst from '@/pages/VueFirst'
 import Run from '@/pages/sport/run'
 import Basketball from '@/pages/sport/basketball'
-import About from '@/pages/About'
-import Haha from '@/pages/Haha'
+import VIf from '@/pages/VIf'
+import VFor from '@/pages/VFor'
 import User from '@/pages/User'
 import Error from '@/pages/404'
 
@@ -22,7 +22,32 @@ export default new Router({
     {
       path: '/vuefirst',
       name: 'VueFirst',
-      component: VueFirst,
+      component: VueFirst
+    },
+    {
+      path: '/detail',
+      name: 'detail',
+      component: Detail
+    },
+    {
+      path: '/VIf',
+      name: 'VIf',
+      component: VIf
+    },
+    {
+      path: '/VFor',
+      name: 'VFor',
+      component: VFor
+    },
+    {
+      path: '/error',
+      name: 'error',
+      component: Error
+    },
+    {
+      path: '/user/:id',
+      name: 'user',
+      component: User,
       // 子路由
       children: [
         {
@@ -34,31 +59,6 @@ export default new Router({
           component: Basketball
         }
       ]
-    },
-    {
-      path: '/detail',
-      name: 'detail',
-      component: Detail
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: About
-    },
-    {
-      path: '/haha',
-      name: 'haha',
-      component: Haha
-    },
-    {
-      path: '/error',
-      name: 'error',
-      component: Error
-    },
-    {
-      path: '/user/:id',
-      name: 'user',
-      component: User
     }
   ]
 })
