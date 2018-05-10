@@ -6,7 +6,7 @@
       <ul>
           <!-- router-link 定义点击后导航到哪个路径下 -->
           <li v-for="(item, index) in routers" v-bind:key="item.name" v-on:click="changeColor(index)">
-            <router-link v-bind:id="'list-' + index" v-bind:to=item.router v-bind:class="{ 'container-a':true,'container-a-click':item.checked }">{{item.name}}</router-link>
+            <router-link :routers="routers" v-bind:id="'list-' + index" v-bind:to=item.router v-bind:class="{ 'container-a':true,'container-a-click':item.checked }">{{item.name}}</router-link>
           </li>
 
           <!--  增加两个到user组件的导航，可以看到这里使用了不同的to属性 -->
@@ -16,7 +16,6 @@
     </div>
     <!-- 对应的组件内容渲染到router-view中 -->
     <div class="contain-main"><router-view></router-view></div>
-
     <div style="clear: both;"></div>
   </div>
 </template>
@@ -33,6 +32,15 @@ export default {
     var preIndex = Storage.fetchNum()
     if (preIndex != null) {
       this.routers[preIndex].checked = true
+    } else {
+      var path = this.$route.path
+      var router = this.routers
+      router.forEach(function (value, index) {
+        if (value.router === path) {
+          router[index].checked = true
+          Storage.saveNum(index)
+        }
+      })
     }
   },
   data () {
@@ -48,15 +56,31 @@ export default {
           checked: false
         }, {
           name: 'vue 条件语句',
-          router: '/VIf',
+          router: '/vIf',
           checked: false
         }, {
           name: 'vue 循环语句',
-          router: '/VFor',
+          router: '/vFor',
           checked: false
         }, {
-          name: '404',
-          router: '/error',
+          name: 'Vue 计算属性',
+          router: '/computed',
+          checked: false
+        }, {
+          name: 'vue 监听属性',
+          // router: {
+          //   name: 'Listen',
+          //   params: {num: 5}
+          // },
+          router: '/listen',
+          checked: false
+        }, {
+          name: 'Vue 样式绑定',
+          router: '/class',
+          checked: false
+        }, {
+          name: 'Vue 事件处理',
+          router: '/vOn',
           checked: false
         }, {
           name: 'Detail',
@@ -72,7 +96,7 @@ export default {
           checked: false
         }
       ],
-      dynamicSegment: ''
+      dynamicSegments: ''
     }
   },
   // computed: {

@@ -32,13 +32,13 @@
 .container-a-click{
   color: #fff;
   font-weight: 600;
-  background-color: #64854c;
+  background-color: #96B97D;
 }
 .container ul li a:hover{
   font-weight: 600;
 }
 .container-a-click:hover{
-  background-color: #96B97D;
+  background-color: #a0cd80;
 }
 .contain-main{
   margin: 0 20px;
