@@ -16,7 +16,9 @@
     <p class="bindAttr">a.事件修饰器.stop<a :href="url" v-on:click.stop="doSomething">baidu</a></p>
     <p class="bindAttr">b.按键修饰符.keyup.enter<input @keyup.enter="doThis" v-model="msgs"></p>
     <p class="bindAttr">c.按键修饰符.在改变后才触发（也就是说只有光标离开input输入框的时候值才会改变）
-      <input v-model.lazy="msgs" @change="doThis">绑定：{{msgs}}</p>
+      <input v-model.lazy="msgs">绑定：{{msgs}}</p>
+    <p class="bindAttr">d.按键修饰符.失去焦点去除前后空格
+      <input v-model.trim="msgss">绑定：{{msgss}}</p>
 
     <p>5.过滤器</p>
     <p class="bindAttr">a.在两个大括号中 {{ message | capitalize }}</p>
@@ -40,6 +42,7 @@ export default{
       message: 'abcdef',
       writeIn: '',
       msgs: '',
+      msgss: '',
       props: {
         name: 'zhang'
       }
@@ -49,9 +52,6 @@ export default{
     doSomething: function () {
       console.info('阻止单击事件冒泡,a跳转之前执行此方法')
       confirm('确认删除吗')
-    },
-    doThis: function () {
-      console.info(this.msgs)
     },
     reverseMessage: function () {
       /* Vue.set 方法用来新增对象的属性。如果要增加属性的对象是响应式的，那该方法可以确保属性被创建后也是响应式的
@@ -71,6 +71,14 @@ export default{
       if (!value) return ''
       value = value.toString()
       return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+  },
+  watch: {
+    msgs: function (val) {
+      console.info(val)
+    },
+    msgss: function (val) {
+      console.info(val)
     }
   }
 }

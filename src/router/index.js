@@ -10,8 +10,12 @@ import Computed from '@/pages/Computed'
 import Listen from '@/pages/Listen'
 import Class from '@/pages/Class'
 import VOn from '@/pages/VOn'
+import VInput from '@/pages/VInput'
+import VComponent from '@/pages/VComponent'
+import Vself from '@/pages/Vself'
 import Detail from '@/components/Detail'
 import User from '@/pages/User'
+import NotFound from '@/pages/404'
 
 Vue.use(Router)
 
@@ -58,6 +62,21 @@ export default new Router({
       component: VOn
     },
     {
+      path: '/vInput',
+      name: 'VInput',
+      component: VInput
+    },
+    {
+      path: '/vComponent',
+      name: 'VComponent',
+      component: VComponent
+    },
+    {
+      path: '/vself',
+      name: 'Vself',
+      component: Vself
+    },
+    {
       path: '/detail',
       name: 'detail',
       component: Detail
@@ -77,6 +96,14 @@ export default new Router({
           component: Basketball
         }
       ]
+    },
+    {
+      path: '*',
+      component: NotFound,
+      name: 'notfound',
+      meta: {
+        title: '404-页面丢了'
+      }
     }
   ]
 })

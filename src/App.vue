@@ -83,6 +83,18 @@ export default {
           router: '/vOn',
           checked: false
         }, {
+          name: 'Vue 表单',
+          router: '/vInput',
+          checked: false
+        }, {
+          name: 'Vue 组件',
+          router: '/vComponent',
+          checked: false
+        }, {
+          name: 'vue 自定义组件',
+          router: '/vself',
+          checked: false
+        }, {
           name: 'Detail',
           router: '/detail',
           checked: false
