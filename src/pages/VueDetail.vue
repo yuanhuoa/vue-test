@@ -32,19 +32,7 @@ export default {
     Storage, VueDetail
   },
   created () {
-    var preIndex = Storage.fetchNum()
-    if (preIndex != null) {
-      this.routers[preIndex].checked = true
-    } else {
-      var path = this.$route.path
-      var router = this.routers
-      router.forEach(function (value, index) {
-        if (value.router === path) {
-          router[index].checked = true
-          Storage.saveNum(index)
-        }
-      })
-    }
+    this.toWhere()
   },
   data () {
     return {
@@ -128,6 +116,21 @@ export default {
         this.routers[preIndex].checked = false
       }
       Storage.saveNum(index)
+    },
+    toWhere: function (froms) {
+      // 首先查询url,没有404
+      var path = this.$route.path
+      var router = this.routers.map(function (value) {
+        return value['router']
+      })
+      var index = router.indexOf(path)
+      if (index === -1) {
+        // 404
+      } else {
+        if (froms) this.routers[router.indexOf(froms.path)].checked = false // 清除之前路由颜色
+        this.routers[index].checked = true
+        this.$router.push({path: router[index].router}) // 路由跳转
+      }
     }
   },
   watch: {
@@ -141,6 +144,7 @@ export default {
       // console.log(to.params)
       // console.log(this.dynamicSegment)
       // this.$router.push("home")  跳转home组件界面
+      this.toWhere(froms)
     }
   }
 }

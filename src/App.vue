@@ -1,22 +1,7 @@
 <template>
-  <div id="app">
-    <span v-for="item in types" :key="item"><input type="button" :value=item @click="changeType(item)"></span>
-    <p>
-      <span v-if="type === 'vue 详解'">
-        <h1>vue 的简单应用</h1>
-        <vue-detail></vue-detail>
-      </span>
-      <span v-else-if="type === 'eCharts'">
-        <h1>vue 的简单应用</h1>
-        <!--<vue-detail></vue-detail>-->
-      </span>
-      <span v-else-if="type === 'C'">C</span>
-      <span v-else>Not A/B/C</span>
-    </p>
-    <div v-if="true">
-
-    </div>
-
+  <div style="width: 1050px;">
+    <h1>vue 的简单应用</h1>
+    <vue-detail></vue-detail>
   </div>
 </template>
 
@@ -27,18 +12,11 @@ import VueDetail from './pages/VueDetail'
 export default {
   name: 'App',
   data () {
-    return {
-      types: ['vue 详解', 'eCharts', 'C'],
-      type: 'vue 详解'
-    }
+    return {}
   },
-  methods: {
-    changeType: function (item) {
-      this.type = item
-    }
-  },
+  methods: {},
   components: {
-    Storage, VueDetail
+    VueDetail
   }
 }
 </script>
@@ -50,6 +28,7 @@ export default {
     background-color: #8ac007;
     border: 1px solid #8ac007;
     margin-right: 30px;
+    cursor: pointer;
   }
   input:hover{
     opacity: 0.5;
