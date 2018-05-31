@@ -3,7 +3,7 @@
   position: fixed;
   right: 13px;
   top: 15px;
-  width: 300px;
+  width: 330px;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.3);
@@ -230,16 +230,22 @@
 }
 
 ._content_show{
-  padding: 0 10px;
+  max-height: 470px;
+  overflow-y: scroll;
+}
+
+.page_show{
+  width: 293px;
+  border: 1px solid #eeeeee;
+  margin: 10px;
 }
 
 ._footer_left_show{
   display: inline-block;
   width: 49%;
-  padding: 13px 5%;
+  padding: 13px 0;
   text-align: center;
   cursor: pointer;
-  margin-top: 10px;
   border-top: 1px solid #eeeeee;
 }
 ._footer_left_show:hover{

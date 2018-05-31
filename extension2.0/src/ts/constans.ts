@@ -18,10 +18,9 @@ export const DIV_SHOW: string = `
 </div>`;
 
 export const FIRST_PAGE: string =`
-<div id="_first_page">
+<div id="_first_page" class="page_show">
   <p>123</p>
   <p>123</p>
-  <button id="logina" type="button">FaceBook登录</button>
   <p>123</p>
   <p>123</p>
   <p>123</p>
@@ -39,7 +38,7 @@ export const FIRST_PAGE: string =`
 </div>`;
 
 export const SECOND_PAGE: string =`
-<div id="_second_page">
+<div id="_second_page" class="page_show">
   <p>456</p>
   <p>456</p>
   <p>456</p>
